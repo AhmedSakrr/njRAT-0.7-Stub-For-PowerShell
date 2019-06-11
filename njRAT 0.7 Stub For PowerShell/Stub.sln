@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2024
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "j", "j\j.csproj", "{AB5849F8-01D2-486B-BA31-C3493847BD30}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stub", "Stub\Stub.csproj", "{AB5849F8-01D2-486B-BA31-C3493847BD30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

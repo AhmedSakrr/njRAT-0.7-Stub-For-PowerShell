@@ -8,8 +8,8 @@
     <ProjectGuid>{AB5849F8-01D2-486B-BA31-C3493847BD30}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>j</RootNamespace>
-    <AssemblyName>j</AssemblyName>
+    <RootNamespace>Stub</RootNamespace>
+    <AssemblyName>Stub</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publish\</PublishUrl>

